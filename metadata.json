@@ -1,0 +1,6 @@
+{
+  "name": "Q-SAFE Zero-Trust API Security Gateway",
+  "description": "Enterprise-grade cybersecurity dashboard for Query-Sequence Authorization & Forensic Enforcement (Q-SAFE).",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
