@@ -126,11 +126,13 @@ class OracleAnalysis(BaseModel):
     mitre_technique: str = Field(description="MITRE ATT&CK technique ID (e.g., 'T1078')")
     confidence: float = Field(ge=0.0, le=1.0, description="Oracle confidence score 0–1")
 
-    @field_validator("confidence")
+    @field_validator("confidence", mode="before")
     @classmethod
-    def clamp_confidence(cls, v: float) -> float:
+    def clamp_confidence(cls, v: Any) -> Any:
         """Clamp confidence to [0.0, 1.0]."""
-        return max(0.0, min(1.0, v))
+        if isinstance(v, (int, float)):
+            return max(0.0, min(1.0, float(v)))
+        return v
 
 
 class SequenceStep(BaseModel):
